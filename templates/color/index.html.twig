@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>{{ color }}</h1>
+    <h1 style="color: {{ color }}">{{ color }}</h1>
+
+    {% if color == 'red' %}
+        <p style="color: red">Attention, risque de virus</p>
+    {% endif %}
 {% endblock %}
