@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les articles - {{ parent() }}{% endblock %}
+
+{% block body %}
+    <ul>
+        {% for article in articles %}
+            <li>
+                <h2>{{ article.title }} par {{ article.author }} le {{ article.publishedAt.format('d/m/Y') }}</h2>
+                <p>{{ article.content }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
