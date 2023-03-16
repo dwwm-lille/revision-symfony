@@ -6,7 +6,9 @@
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap">
             <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}">
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
@@ -15,20 +17,39 @@
         {% endblock %}
     </head>
     <body>
-        <img src="{{ asset('img/cat.jpg') }}" alt="Chat" width="150">
+        {% set route = app.request.get('_route') %}
 
-        <ul>
-            <li>
-                <a href="{{ path('app_time') }}">Time</a>
-            </li>
-            <li>
-                <a href="{{ path('app_color', { color: 'blue' }) }}">Color</a>
-            </li>
-            <li>
-                <a href="{{ path('app_ip') }}">Votre IP</a>
-            </li>
-        </ul>
+        <div class="container mb-5">
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="{{ path('app_home') }}">
+                    <img src="{{ asset('img/cat.jpg') }}" alt="Chat" width="150">
+                </a>
 
-        {% block body %}{% endblock %}
+                <ul class="d-flex list-unstyled menu">
+                    <li>
+                        <a href="{{ path('app_time') }}" class="{{ route == 'app_time' ? 'active' }}">Time</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('app_color', { color: 'blue' }) }}" class="{{ route == 'app_color' ? 'active' }}">Color</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('app_ip') }}" class="{{ route == 'app_ip' ? 'active' }}">Votre IP</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('app_home') }}" class="{{ route == 'app_home' ? 'active' }}">Accueil</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('app_article') }}" class="{{ route == 'app_article' ? 'active' }}">Articles</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('app_search') }}" class="{{ route == 'app_search' ? 'active' }}">Recherche</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container">
+            {% block body %}{% endblock %}
+        </div>
     </body>
 </html>

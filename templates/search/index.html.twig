@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Exercice 5 - Recherche{% endblock %}
+
+{% block body %}
+    <form class="d-flex w-50 mx-auto">
+        <input class="form-control" type="text" name="search" value="{{ app.request.get('search') }}">
+        <button class="btn btn-primary">Recherche</button>
+    </form>
+
+    {% if search %}
+        <h1 class="mt-5">Avec Twig : {{ app.request.get('search') }}</h1>
+        <h1>Sans Twig : {{ search }}</h1>
+    {% endif %}
+{% endblock %}
