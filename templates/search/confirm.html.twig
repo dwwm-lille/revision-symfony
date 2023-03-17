@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Exercice 5 - Recherche de {{ search }}{% endblock %}
+
+{% block body %}
+    <h1 class="mt-5">Avec Twig : {{ app.request.get('search') }}</h1>
+    <h1>Sans Twig : {{ search }}</h1>
+{% endblock %}

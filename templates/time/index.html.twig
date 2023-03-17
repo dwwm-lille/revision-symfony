@@ -5,4 +5,5 @@
 {% block body %}
     <h1>Sans Twig: {{ clock }}</h1>
     <h1>Avec Twig: {{ 'now' | date('d/m/Y H:i:s') }}</h1>
+    {{ date().format('d/m/Y H:i:s') }}
 {% endblock %}

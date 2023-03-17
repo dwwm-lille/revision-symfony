@@ -3,9 +3,9 @@
 {% block title %}Exercice 5 - Recherche{% endblock %}
 
 {% block body %}
-    <form class="d-flex w-50 mx-auto">
-        <input class="form-control" type="text" name="search" value="{{ app.request.get('search') }}">
-        <button class="btn btn-primary">Recherche</button>
+    <form class="d-flex w-50 mx-auto" action="{{ path('app_search_confirm') }}">
+        <input class="form-control rounded-end-0" type="text" name="search" value="{{ app.request.get('search') }}">
+        <button class="btn btn-primary rounded-start-0">Recherche</button>
     </form>
 
     {% if search %}

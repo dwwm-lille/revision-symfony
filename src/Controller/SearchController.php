@@ -16,4 +16,18 @@ class SearchController extends AbstractController
             'search' => $request->get('search'),
         ]);
     }
+
+    #[Route('/search-confirm', name: 'app_search_confirm')]
+    public function confirm(Request $request): Response
+    {
+        $search = $request->get('search');
+
+        if (!$search) {
+            return $this->redirectToRoute('app_search');
+        }
+
+        return $this->render('search/confirm.html.twig', [
+            'search' => $request->get('search'),
+        ]);
+    }
 }
